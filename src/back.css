@@ -44,9 +44,19 @@
   }
 
   .blackbox{
-    height: 300px;
-    width: 300px;
     border:2px solid;
     /* border-color: rgba(0, 0, 0, 0.404); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.555), 0 6px 6px rgba(0, 0, 0, 0.589);
   }
+  div.donut-tip {	
+    position: absolute;	
+    width:300px;		
+    text-align:justify;								
+    padding: .5rem;				
+    background: #ffffff;
+    color: #313639;	
+    border: 1px solid #313639;		
+    border-radius: 8px;			
+    pointer-events: none;
+    font-size: 1.3rem;			
+}
