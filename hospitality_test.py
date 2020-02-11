@@ -8,7 +8,7 @@ header = {'Authorization': 'Token c555181087b592fb11e113eb3bc38713258109b1',
 'Content-type':'application/json','Accept':'application/json'}
 
 while True:
-	college_id = random.randint(1,343)
+	college_id = random.randint(1,342)
 	request_dict = {}
 	request_dict['id'] = college_id
 	print(request_dict)
