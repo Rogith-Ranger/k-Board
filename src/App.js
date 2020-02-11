@@ -4,10 +4,12 @@ import Websocket from 'react-websocket';
 import DonutChart from './DonutChart';
 import './back.css'
 import LolipopChart from './LolipopChart';
+import BubbleChart from './BubbleChart';
 class App extends React.Component {
   state = {
     chartData:[],
-    hospiChartData:[]
+    hospiChartData:[],
+    toggle:false
   }
   handleData = (data) =>{
     let chartData = JSON.parse(data)
@@ -25,7 +27,6 @@ class App extends React.Component {
         });
       }
         this.setState({hospiChartData:finalData})
-        console.log(this.state.hospiChartData)
     }
     else{
       let dict = chartData.data
@@ -42,26 +43,35 @@ class App extends React.Component {
       this.setState({chartData:finalData})
      }
   }
+  handleClick = () =>{
+      if(this.state.toggle)
+      this.setState({toggle:false})
+      else
+      this.setState({toggle:true})
+    
+  }
+
   render(){
   return (
     <div className="App">
         <Websocket url= "ws://k-data-api.herokuapp.com//ws/event/1/"
                 onMessage={this.handleData.bind(this)}/>
-      <div className="split left">
-        <div className="centered">
-          <div className="yellowbox">
-            <LolipopChart chartData={this.state.hospiChartData}/>
-          </div>
-        </div>
+      <div class="loading wave"> 
+          K! Board  
       </div>
-      <div className="split right">
-        <div className="centered">
-          <div className="blackbox">
-            <DonutChart chartData={this.state.chartData}/>
+      <h2 style={{color:"white",marginTop:"10%"}}>Top 10</h2>
+      <div className="split">
+        <div className="div">
+          <DonutChart chartData={this.state.chartData}/>
           </div>
-        </div>
+          <div className="div">
+            <LolipopChart chartData={this.state.hospiChartData}/>     
+            </div>
+            <div className="div">
+            <BubbleChart chartData={this.state.chartData}/>
+            </div>
       </div>
-        
+        <div style={{color:"white",marginTop:"20px"}}>Developed by Rogith and Srinivas Raman</div>
     </div>
   );
   }

@@ -6,14 +6,15 @@ class DonutChart extends Component {
 componentDidUpdate(prevProps) {
     if(!equal(this.props.chartData, prevProps.chartData)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
     {
+		console.log(this.props.chartData)
       this.drawChart();
     }
   } 
   
 drawChart = () =>{
     d3.selectAll(".donut").remove()
-    var width = 560;
-    var height = 560;
+    var width = 420;
+    var height = 420;
 
     var svg = d3.select('#donutchart')
         .append('svg')
@@ -97,8 +98,8 @@ drawChart = () =>{
                 .style("opacity", 1);
             let num = "<b>Event:</b> "+d.data.event+"<br/><b>Count:</b> "+d.data.count
             donutTip.html(num)
-                .style("left", "26%")
-                .style("top", "46%");
+                .style("left", "8%")
+                .style("top", "55%");
         })
 		//Append the label names on the outside
 		svg.selectAll(".donutText")
@@ -110,8 +111,21 @@ drawChart = () =>{
 		    .append("textPath")
 			.attr("startOffset","50%")
 			.style("text-anchor","middle")
+			.style("fill","white")
 			.attr("xlink:href",function(d,i){return "#donutArc"+i;})
 			.text(function(d){return d.data.event;});
+		
+		svg.selectAll(".donutCount")
+			.data(pie(this.props.chartData))
+		   .enter().append("text")
+			.attr("class", "donutCount")
+			//Move the labels below the arcs for those slices with an end angle greater than 90 degrees
+			.attr("dy", function(d,i) { return (d.endAngle > 90 * Math.PI/180 ? -11 : 20); })
+		    .append("textPath")
+			.attr("startOffset","50%")
+			.style("text-anchor","middle")
+			.attr("xlink:href",function(d,i){return "#donutArc"+i;})
+			.text(function(d){return d.data.count;});
 }
 
     render() {

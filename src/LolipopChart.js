@@ -6,13 +6,14 @@ componentDidUpdate(prevProps) {
     if(!equal(this.props.chartData, prevProps.chartData)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
     {
         this.drawChart();
+        console.log(this.props.chartData)
     }
     }     
 drawChart = () =>{
     d3.selectAll(".loli").remove()    
 var margin = {top: 50, right: 30, bottom: 20, left: 40},
-width = 460 - margin.left - margin.right,
-height = 500 - margin.top - margin.bottom;
+width = 400 - margin.left - margin.right,
+height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#lolipop")
@@ -33,18 +34,23 @@ var x = d3.scaleBand()
 .padding(1);
 svg.append("g")
 .attr("transform", "translate(0," + height + ")")
+.attr("class", "axisRed")
 .call(d3.axisBottom(x).tickSize(0))
 .selectAll("text")
 .style("font-weight","bold")
-.attr("transform", "translate(0,-300)rotate(-90)")
+.style("fill","white")
+.attr("transform", "translate(4,-300)rotate(-90)")
 .style("text-anchor", "end")
 
 // Add Y axis
 var y = d3.scaleLinear()
-.domain([0, d3.max(data.map(function(d){return d.count}))])
+.domain([0, d3.max(data, function (d) { return d.count; })])
 .range([ height, 0]);
 svg.append("g")
-.call(d3.axisLeft(y));
+.attr("class", "axisRed")
+.call(d3.axisLeft(y).ticks(10).tickFormat(d3.format(",d")))
+.selectAll("text")
+.style("fill","white");
 
 // Lines
 svg.selectAll("myline")
@@ -55,7 +61,7 @@ svg.selectAll("myline")
 .attr("x2", function(d) { return x(d.college); })
 .attr("y1", function(d) { return y(d.count); })
 .attr("y2", y(0))
-.attr("stroke", "grey")
+.attr("stroke", "white")
 
 // Circles
 svg.selectAll("mycircle")

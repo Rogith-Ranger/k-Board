@@ -1,13 +1,24 @@
 .split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
+    display: inline-flex;
+  }
+  body {
+    background: #141414;
+   }
+  .div{
+    margin:10px;
+    box-shadow: 0 10px 20px rgba(34, 34, 34, 0.555), 0 6px 6px rgba(51, 51, 51, 0.589);
+  }
+  .axisRed line{
+    stroke: red;
   }
   
+  .axisRed path{
+    stroke: red;
+  }
+  
+  .axisRed text{
+    fill: red;
+  }
   /* Control the left side */
   .left {
     left: 0;
@@ -47,8 +58,7 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.555), 0 6px 6px rgba(0, 0, 0, 0.589);
   }
   div.donut-tip {	
-    position: absolute;	
-    width:300px;		
+    position: absolute;		
     text-align:justify;								
     padding: .5rem;				
     background: #ffffff;
@@ -57,4 +67,51 @@
     border-radius: 8px;			
     pointer-events: none;
     font-size: 1.3rem;			
+}
+
+.loading {
+  text-transform: uppercase;
+  font-family: 'Cabin Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 50pt;
+  text-align: center;
+  height: 120px;
+  line-height: 110px;
+  vertical-align: bottom;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10px;
+  bottom: 0;
+  display: block;
+}
+
+@keyframes wave-animation {
+  0% {
+    background-position: 0 bottom;
+  }
+  100% {
+    background-position: 200px bottom;
+  }
+}
+@keyframes loading-animation {
+  0% {
+    background-size: 200px 0px;
+  }
+  100% {
+    background-size: 200px 200px;
+  }
+}
+.wave {
+  background-image: url("https://i.imgur.com/uFpLbYt.png");
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px rgba(255, 255, 255, 0.06);
+  animation: wave-animation 1s infinite linear, loading-animation 10s infinite linear alternate;
+  background-size: 200px 100px;
+  background-repeat: repeat-x;
+  opacity: 1;
 }
