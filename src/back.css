@@ -11,13 +11,13 @@
   /* Control the left side */
   .left {
     left: 0;
-    background-color: #111;
+    background-color: rgb(255, 255, 255);
   }
   
   /* Control the right side */
   .right {
     right: 0;
-    background-color: yellow;
+    background-color: rgb(255, 255, 255);
   }
   
   /* If you want the content centered horizontally and vertically */
@@ -36,8 +36,6 @@
   }
 
   .yellowbox{
-      height: 300px;
-      width: 300px;
       border:2px solid;
       border-color: rgba(255, 255, 0, 0.63);
       box-shadow: 0 10px 20px rgba(255, 238, 0, 0.555), 0 6px 6px rgba(255, 238, 0, 0.589);

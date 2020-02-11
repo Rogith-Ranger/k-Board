@@ -13,4 +13,4 @@ while True:
 	request_dict['id'] = college_id
 	print(request_dict)
 	response = requests.post("https://k-data-api.herokuapp.com/data-api/hospitality-checkin/",data = json.dumps(request_dict),headers = header)
-	sleep(6)
+	sleep(2)
