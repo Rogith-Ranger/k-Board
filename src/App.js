@@ -5,12 +5,22 @@ import DonutChart from './DonutChart';
 import './back.css'
 class App extends React.Component {
   state = {
-    chartData:{}
+    chartData:[]
   }
   handleData = (data) =>{
-    console.log(data)
     let chartData = JSON.parse(data)
-    console.log(chartData)
+    let dict = chartData.data
+    let finalData = []
+    if(dict !== undefined)
+    {
+      Object.keys(dict).forEach(function(key) {
+        let temp = {}
+        temp['event'] = key
+        temp['count'] = dict[key]
+        finalData.push(temp)
+      });
+    }
+      this.setState({chartData:finalData})
   }
   render(){
   return (
