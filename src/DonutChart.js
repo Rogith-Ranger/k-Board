@@ -6,17 +6,18 @@ class DonutChart extends Component {
 componentDidUpdate(prevProps) {
     if(!equal(this.props.chartData, prevProps.chartData)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
     {
-      this.draw();
+      this.drawChart();
     }
   } 
   
-draw(){
-    d3.selectAll("svg").remove()
+drawChart = () =>{
+    d3.selectAll(".donut").remove()
     var width = 560;
     var height = 560;
 
     var svg = d3.select('#donutchart')
         .append('svg')
+        .attr('class','donut')
         .attr('width', width)
         .attr('height', height)
         .append('g')

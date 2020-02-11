@@ -12,4 +12,4 @@ while True:
 	request_dict['id'] = event_id
 	response = requests.post("https://k-data-api.herokuapp.com/data-api/event-checkin/",data = json.dumps(request_dict),headers = header)
 	print(response)
-	sleep(6)
+	sleep(4)
