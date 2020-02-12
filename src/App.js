@@ -59,19 +59,22 @@ class App extends React.Component {
       <div className="loading wave"> 
           K! Board  
       </div>
-      <h2 style={{color:"white",marginTop:"10%"}}>Top 10</h2>
+      <h2 style={{color:"white",marginTop:"10%"}} className="top">Top 10</h2>
       <div className="split">
         <div className="div">
+        <h2 style={{color:"white",marginTop:"10%"}} className="top">Event-O-Meter</h2>
           <DonutChart chartData={this.state.chartData}/>
           </div>
           <div className="div">
+          <h2 style={{color:"white",marginTop:"10%"}} className="top">College-O-Meter</h2>
             <LolipopChart chartData={this.state.hospiChartData}/>     
             </div>
             <div className="div">
+            <h2 style={{color:"white",marginTop:"10%"}} className="top">Event-O-Meter</h2>
             <BubbleChart chartData={this.state.chartData}/>
             </div>
       </div>
-        <div style={{color:"white",marginTop:"20px"}}>Developed by Rogith and Srinivas Raman</div>
+        <div className="credit">Developed by Rogith and Srinivas Raman</div>
     </div>
   );
   }
