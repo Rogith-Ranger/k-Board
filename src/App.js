@@ -54,9 +54,9 @@ class App extends React.Component {
   render(){
   return (
     <div className="App">
-        <Websocket url= "ws://k-data-api.herokuapp.com//ws/event/1/"
+        <Websocket url= "wss://k-data-api.herokuapp.com//ws/event/1/"
                 onMessage={this.handleData.bind(this)}/>
-      <div class="loading wave"> 
+      <div className="loading wave"> 
           K! Board  
       </div>
       <h2 style={{color:"white",marginTop:"10%"}}>Top 10</h2>
